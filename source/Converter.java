@@ -33,41 +33,47 @@ public class Converter {
     // format and print the output
     public void printValues() {
 
-        if (numberOfKilograms == 1) {
-            System.out.println("1 kilogram in stones, pounds and ounces is: ");
+        // print error if value entered was <= 0
+        if (numberOfKilograms <= 0) {
+            System.out.println("Invalid input!");
         }
         else {
-            System.out.println(numberOfKilograms + " kilograms in stones, pounds and ounces is: ");
-        }
+            if (numberOfKilograms == 1) {
+                System.out.println("1 kilogram in stones, pounds and ounces is: ");
+            }
+            else {
+                System.out.println(numberOfKilograms + " kilograms in stones, pounds and ounces is: ");
+            }
 
-        String outputLine = "";
+            String outputLine = "";
 
-        // deal with stones
-        if (numberOfStone == 1) {
-            outputLine += "1 stone, ";
-        }
-        else if (numberOfStone > 1) {
-            outputLine += numberOfStone + " stones, ";
-        }
+            // deal with stones
+            if (numberOfStone == 1) {
+                outputLine += "1 stone, ";
+            }
+            else if (numberOfStone > 1) {
+                outputLine += numberOfStone + " stones, ";
+            }
 
-        // deal with pounds
-        if (numberOfPounds == 1) {
-            outputLine += "1 pound ";
-        }
-        else if (numberOfPounds > 1) {
-            outputLine += numberOfPounds + " pounds ";
-        }
+            // deal with pounds
+            if (numberOfPounds == 1) {
+                outputLine += "1 pound ";
+            }
+            else if (numberOfPounds > 1) {
+                outputLine += numberOfPounds + " pounds ";
+            }
 
-        // deal with ounces
-        if (numberOfOunces == 1) {
-            outputLine += "and 1 ounce";
-        }
-        else if(numberOfOunces > 1) {
-            outputLine += "and " + numberOfOunces + " ounces";
-        }
+            // deal with ounces
+            if (numberOfOunces == 1) {
+                outputLine += "and 1 ounce";
+            }
+            else if(numberOfOunces > 1) {
+                outputLine += "and " + numberOfOunces + " ounces";
+            }
 
-        // print formatted line
-        System.out.println(outputLine);
+            // print formatted line
+            System.out.println(outputLine);
+        }
 
     }
 
