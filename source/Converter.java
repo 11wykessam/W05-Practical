@@ -33,7 +33,12 @@ public class Converter {
     // format and print the output
     public void printValues() {
 
-        System.out.println(numberOfKilograms + " kilograms in stones, pounds and ounces is: ");
+        if (numberOfKilograms == 1) {
+            System.out.println("1 kilogram in stones, pounds and ounces is: ");
+        }
+        else {
+            System.out.println(numberOfKilograms + " kilograms in stones, pounds and ounces is: ");
+        }
 
         String outputLine = "";
 
