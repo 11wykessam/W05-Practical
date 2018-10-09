@@ -26,12 +26,15 @@ public class Converter {
         numberOfStone = (int)totalStone;
         numberOfPounds = (int)(totalPounds - numberOfStone*POUNDSINASTONE);
         // note: ounces needs to be rounded instead of floored
-        numberOfOunces = (int)(Math.round(totalOunces - numberOfPounds*OUNCESINAPOUND - numberOfStone*POUNDSINASTONE*OUNCESINAPOUND));
+        numberOfOunces = (int)((totalOunces - numberOfPounds*OUNCESINAPOUND - numberOfStone*POUNDSINASTONE*OUNCESINAPOUND));
+        //Math.round
 
     }
 
     // format and print the output
     public void printValues() {
+
+        System.out.println(kilogramsToOunces(numberOfKilograms));
 
         // print error if value entered was <= 0
         if (numberOfKilograms <= 0) {

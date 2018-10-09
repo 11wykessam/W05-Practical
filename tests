@@ -1,0 +1,16 @@
+TEST 1
+ROUNDING ERROR
+Was using (int) to cast to int which is not appropriate for the ounces value as it needs to be rounded.
+Changed to Math.round() and works fine now.
+
+TEST 2
+FORMATTING ERROR
+Put pounds, stones and ounces instead of stones, pounds and ounces.
+
+TEST 3
+FORMATTING ERROR
+Didn't do plurality correctly for "1 kilograms in stones, pounds and ounces"
+
+TEST 4
+DIDN'T CHECK INVALID INPUT
+Need to change program such that invalid input is printed if an invalid input is entered.
