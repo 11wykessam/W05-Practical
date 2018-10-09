@@ -5,7 +5,7 @@ public class Converter {
     private int OUNCESINAPOUND = 16;
     private int POUNDSINASTONE = 14;
 
-    // variables used to store number of ounces, pounds, and stones
+    // variables used to store number of kilograms, ounces, pounds, and stones
     private int numberOfKilograms = 0;
     private int numberOfOunces = 0;
     private int numberOfPounds = 0;
@@ -26,15 +26,12 @@ public class Converter {
         numberOfStone = (int)totalStone;
         numberOfPounds = (int)(totalPounds - numberOfStone*POUNDSINASTONE);
         // note: ounces needs to be rounded instead of floored
-        numberOfOunces = (int)((totalOunces - numberOfPounds*OUNCESINAPOUND - numberOfStone*POUNDSINASTONE*OUNCESINAPOUND));
-        //Math.round
+        numberOfOunces = (int)(Math.round(totalOunces - numberOfPounds*OUNCESINAPOUND - numberOfStone*POUNDSINASTONE*OUNCESINAPOUND));
 
     }
 
     // format and print the output
     public void printValues() {
-
-        System.out.println(kilogramsToOunces(numberOfKilograms));
 
         // print error if value entered was <= 0
         if (numberOfKilograms <= 0) {
@@ -48,31 +45,26 @@ public class Converter {
                 System.out.println(numberOfKilograms + " kilograms in stones, pounds and ounces is: ");
             }
 
+            // create an empty line to append to
             String outputLine = "";
 
-            // deal with stones
-            if (numberOfStone == 1) {
-                outputLine += "1 stone, ";
-            }
-            else if (numberOfStone > 1) {
-                outputLine += numberOfStone + " stones, ";
-            }
+            // do a check to see if plurality is needed for stone
+            if(numberOfStone == 1) outputLine += "1 stone";
+            else if(numberOfStone > 1) outputLine += numberOfStone + " stones";
+            // first check if an "and" is needed
+            if(numberOfStone > 0 && (numberOfPounds > 0 ^ numberOfOunces > 0)) outputLine += " and ";
+            // next check if a "," is needed
+            else if(numberOfStone > 0 && numberOfPounds > 0 && numberOfOunces > 0) outputLine += ", ";
 
-            // deal with pounds
-            if (numberOfPounds == 1) {
-                outputLine += "1 pound ";
-            }
-            else if (numberOfPounds > 1) {
-                outputLine += numberOfPounds + " pounds ";
-            }
+            // do a check to see if plurality is needed for pounds
+            if(numberOfPounds == 1) outputLine += "1 pound";
+            else if(numberOfPounds > 1) outputLine += numberOfPounds + " pounds";
+            // check if an "and" is needed
+            if(numberOfPounds > 0 && numberOfOunces > 0) outputLine += " and ";
 
-            // deal with ounces
-            if (numberOfOunces == 1) {
-                outputLine += "and 1 ounce";
-            }
-            else if(numberOfOunces > 1) {
-                outputLine += "and " + numberOfOunces + " ounces";
-            }
+            // do a check to see if plurality is needed for ounces
+            if(numberOfOunces == 1) outputLine += "1 ounce";
+            else if(numberOfOunces > 1) outputLine += numberOfOunces + " ounces";
 
             // print formatted line
             System.out.println(outputLine);
@@ -88,6 +80,7 @@ public class Converter {
     private double ouncesToPounds(double input) {
         return input/OUNCESINAPOUND;
     }
+    // method to convert pounds to stone
     private double poundsToStone(double input) {
         return input/POUNDSINASTONE;
     }
