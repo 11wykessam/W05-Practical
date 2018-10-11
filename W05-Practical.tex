@@ -1,6 +1,33 @@
 \documentclass[a4paper]{article}
 \usepackage[utf8]{inputenc}
 \usepackage{sectsty}
+\usepackage{float}
+\usepackage{listings}
+\usepackage{color}
+
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+% Java code styling
+\lstset{frame=tb,
+  language=Java,
+  aboveskip=3mm,
+  belowskip=3mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\small\ttfamily},
+  numbers=none,
+  numberstyle=\tiny\color{gray},
+  keywordstyle=\color{blue},
+  commentstyle=\color{dkgreen},
+  stringstyle=\color{mauve},
+  breaklines=true,
+  breakatwhitespace=true,
+  tabsize=3
+}
+
+\restylefloat{table}
 
 \title{CS1002 W05 Practical Report}
 \author{Samuel Wykes}
@@ -28,12 +55,15 @@ program. I decided to break down the problem even further it would be wise to ha
 reuse. The convert method didn't need to return anything as instead it would store the calculated values within variables in the Converter object and 
 then a separate method called printValues could provide a print out of the stored values.
 
-The printValues method would be where most of the conditionals of the program would go as I would have to make sure that the correct plurality is used 
-for each unit. This would be done by an if statement checking if the value of each of the respective unit variables were equal to one. If this is true 
-then the singular version of the unit name would need to be printed, for example 1 pound instead of 1 pounds, however an if else statement would be 
-called to check if the variable value was greater than one and then output the plural version. An additional check would need to be performed to check 
-that the user had inputted an integer less than or equal to 0. If the stored kilogram value was less than or equal to zero the error message "Invalid 
-input!" would be printed and the program wouldn't print anything else.
+The printValues method would be where most of the conditionals of the program would go as I have to make sure that the output is formatted correctly. 
+When planning the conditional statements I first focused on plurality. When printing the number of stones, pounds and ounces then I need to print the 
+singular versions (stone, pound, ounce) if the number of that unit stored in the corresponding variables is 1. If the number is greater than that the 
+plural versions need to be printed (stones, pounds, ounces) and if the value is 0 nothing should be printed. This brings up a problem with punctuation 
+as there is a possibility for three different punctuation or the word and positions. The first possible extra word or punctuation position is between 
+where the stones and pounds are being printed. A comma should be placed here only if all three unit values are greater than 0. An and symbol can also be there but only if number 
+stones is greater than 0 and exactly one of number of pounds and number of ounces is greater than 0. The final thing that could be added is an and 
+between the number of pounds and the number of ounces. This and should only be printed if both the number of pounds and number of ounces is greater 
+than 0.
 
 The rest of the problem would be solved in the main method in the W05Practical class. Here instances of EasyIn2 and Converter would be created to 
 take input and do conversion respectively. The main class would also have to print a message to prompt the user to input the number of kilograms they 
@@ -46,27 +76,175 @@ individually comparing the expected values to the actual return values. One of t
 conversions were working. Here I shall provide the testing results for the kilogramsToOunces method. Here I shall be testing a range of inputs and 
 comparing the outputs to what I'd expect by using an online converter and comparing the output of calling the method from the main method with the 
 result given by the online converter for the same arguments.
+
 \begin{table}[!h]
 \begin{tabular}{lll}
 \textbf{Input} & \textbf{Expected Value} & \textbf{Returned Value} \\
 1              & 35.274                  & 32.151239430280036      \\
+2              & 70.5479                 & 64.30247886056007       \\
+3              & 105.822                 & 96.45371829084011       \\
+4              & 141.096                 & 128.60495772112014      \\
+5              & 176.37                  & 160.7561971514002       \\
+6              & 211.644                 & 192.90743658168023      \\
 7              & 246.918                 & 225.05867601196027      \\
-72             & 2539.73                 & 2314.8892389801626     
+72             & 2539.73                 & 2314.8892389801626      \\
+1000           & 35274                   & 32151.23943028004      
 \end{tabular}
 \end{table}
+
 From this I deduced that the constant I was using for conversion was incrorect. I changed this value to what it should be (it turns out my google 
 search for conversion of kilogram to ounce gave me an incorrect value.) Once I reran the program the converted values were the same as those given by 
-the conversion website so I deemed the method to be working.
+the conversion website so I deemed the method to be working. Below are the results of the same tests run with the fixed program.
+
+\begin{table}[!h]
+\begin{tabular}{lll}
+\textbf{Input} & \textbf{Expected Value} & \textbf{Returned Value} \\
+1              & 35.274                  & 35.27399072294044       \\
+2              & 70.5479                 & 70.54798144588088       \\
+3              & 105.822                 & 105.82197216882132      \\
+4              & 141.096                 & 141.09596289176176      \\
+5              & 176.37                  & 176.3699536147022       \\
+6              & 211.644                 & 211.64394433764264      \\
+7              & 246.918                 & 246.9179350605831       \\
+72             & 2539.73                 & 2539.7273320517115      \\
+1000           & 35274                   & 35273.99072294044      
+\end{tabular}
+\end{table}
 
 Next I needed to test the actual conversion, the way I did this was temporarily making my getters for the different unit variables public and then 
 doing the conversion and printing the variables' values to console. This could then be compared against values obtained using an online converter.
 In the below table the values in brackets represents (stones, pounds, ounces) outputted.
-\begin{table}[!h]
+
+\begin{table}[H]
 \begin{tabular}{lll}
 \textbf{Input} & \textbf{Expected Values} & \textbf{Returned Values} \\
 1              & (0, 2, 3)                & (0, 2, 3)                \\
 7              & (1, 1, 6)                & (1, 1, 6)                \\
-72             & (11, 4, 12)              & (11, 4, 11)             
+72             & (11, 4, 12)              & (11, 4, 11)              \\
+1000           & (157, 6, 10)             & (157, 6, 9)
 \end{tabular}
 \end{table}
+
+From this information I guessed that there was an issue with the rounding. This was correct, I was using floor for all three calculations for stones, 
+pounds and ounces. This is appropriate for stones and pounds as you require a remainder to calculate the next largest unit value, however it is more 
+appropriate to round ounces as you want a final answer closest to the true value. This was an easy fix to make as I just changed the code to 
+Math.round instead of casting the variable to int which floors the value. Below is the new result of the tests.
+\begin{table}[H]
+\begin{tabular}{lll}
+\textbf{Input} & \textbf{Expected Values} & \textbf{Returned Values} \\
+1              & (0, 2, 3)                & (0, 2, 3)                \\
+7              & (1, 1, 6)                & (1, 1, 6)                \\
+72             & (11, 4, 12)              & (11, 4, 12)              \\
+1000           & (157, 6, 10)             & (157, 6, 10)
+\end{tabular}
+\end{table}
+
+The final individual method I had to test before the program could be tested as a whole was the method printValues() used to print the values stored 
+in the Converter object in a readable format. During the development process I identified three bugs with my initial method. The first bug was that 
+when the initial output message was printed it read "x kilograms in pounds, stones and ounces:" rather than "x kilograms in stones, pounds and 
+ounces:" where x is the number of kilograms entered. This was an easy fix as I just changed the message being printed.
+
+The second error I encountered was with the plurality in this initial message, I had done if statements for plurality for the stones, pounds and 
+ounces in the second line of the output message but I had forgot to do an if statement to check if only one kilogram had been inputted. This meant if 
+one kilogram was inputted then the message would read "1 kilograms in stones, pounds and ounces:". This was an easy problem to fix as I just had to 
+add an additional if statement to check if the value of the numberOfKilograms variable was 1 and format the text appropriately.
+
+The final bug I encountered was with invalid input. I had forgotten to add a check to see if the user had entered a value less than or equal to 0. 
+This meant that when the autochecker ran, the program failed one of the checks. I fixed this by surrounding the body of the printValue() method body 
+with an if statement checking if the value of numberOfKilograms was less than or equal to 0. If it was the program would print "Invalid input!" and 
+the program would stop.
+
+After all these tests had been completed all that was left to do was test the program as a whole. Because the program had been properly tested in its 
+individual units it worked perfectly when the units that were decomposed at the start were recombined to solve the whole problem.
+
+\section*{Questions}
+\textbf{1. Explanation of conditional statements.}
+
+The conditional statements were not vastly complex for this project and all reside within the printValues() method. The first of which is as so:
+\begin{lstlisting}
+// print error if value entered was <= 0
+        if (numberOfKilograms <= 0) {
+            System.out.println("Invalid input!");
+        }
+        else {
+            if (numberOfKilograms == 1) {
+                System.out.println("1 kilogram in stones, pounds and ounces is: ");
+            }
+            else {
+                System.out.println(numberOfKilograms + " kilograms in stones, pounds and ounces is: ");
+            }
+
+            // create an empty line to append to.
+            String outputLine = "";
+
+            // do a check to see if plurality is needed for stone
+            if(numberOfStone == 1) outputLine += "1 stone";
+            else if(numberOfStone > 1) outputLine += numberOfStone + " stones";
+            // first check if an "and" is needed
+            if(numberOfStone > 0 && (numberOfPounds > 0 ^ numberOfOunces > 0)) outputLine += " and ";
+            // next check if a "," is needed
+            else if(numberOfStone > 0 && numberOfPounds > 0 && numberOfOunces > 0) outputLine += ", ";
+
+            // do a check to see if plurality is needed for pounds
+            if(numberOfPounds == 1) outputLine += "1 pound";
+            else if(numberOfPounds > 1) outputLine += numberOfPounds + " pounds";
+            // check if an "and" is needed
+            if(numberOfPounds > 0 && numberOfOunces > 0) outputLine += " and ";
+
+            // do a check to see if plurality is needed for ounces
+            if(numberOfOunces == 1) outputLine += "1 ounce";
+            else if(numberOfOunces > 1) outputLine += numberOfOunces + " ounces";
+
+            // print formatted line
+            System.out.println(outputLine);
+        }
+\end{lstlisting}
+I needed a way of checking whether the input was invalid. The specification said to assume the input was an integer so the only condition that was 
+necessary to be met was that the input was a positive integer. Therefore to check this I checked first if the integer was less than or equal to 0. If 
+this is the case then the input is invalid and an error message is printed. The else statement contains the rest of the formatting and works under the 
+assumption that the input is valid which was tested by the first if statement.
+
+Within the body of the first if statement is the rest of the formatting. First of all the program formats the initial line giving the user a handy 
+message to remind them of their input. The only check that needs to be peformed here is testing whether plurality is needed for the output in 
+kilograms, this was a pretty simple if else statement with the condition being that the number of kilograms is equal to 1 or not.
+
+I did the same plurality checks for the other units but instead of a simple if else statement I used else if as I do not want to print anything for 
+these units if the values in the variables are equal to 0. Between each unit value I need to do checks to see if any additional commas or ands need to 
+be added. This was discussed in the design section, the first possible thing to add would be a comma between the stones and pounds values but this 
+only should be added if all the unit values are greater than 0. 
+
+The next possible thing to add would be the word "and" between the value for stones and the value for pounds. This should only be added if the number 
+of stones is greater than 0 and exactly one of the values for pounds and ounces are greater than 0, this is represented with an and and xor statement. 
+
+The final possible thing that could be added is an and between the value for pounds and ounces. This should only be added if both the number of pounds 
+and ounces are greater than 0.
+
+The way the code runs is such that all the things that are added are appended onto what starts as an empty string. This explains the order of the if 
+statements as I am checking in the appropriate order for things to add.
+
+\noindent \textbf{2. Explanation of number of tests.}
+When testing the program I did tests for a range of inputs. From the smallest possible to a very large input. If the program works for a large range 
+as shown then I can think it likely to work for all inputs (below an extreme large number as floating point representation has its limitations). In an 
+ideal world I would test for every single possible input however this is not practical as I have to manually input each one into an online converter 
+and this would take forever. The fact that my program works for a large range of numbers and passes the autochecker is enough to suggest the program 
+satisfies what the specification tells me to do as it is statistically unlikely that the program is incorrect if it returns valid output for so many 
+inputs.
+
+\section*{Evaluation}
+I was asked to convert a kilogram input into stones, pounds and ounces and output this in a user-friendly, correctly pluralised way. My program does 
+perform this task and performs it using conditionals as specified. Beyond this I was also able to decompose the 
+problem further and separate the solution into more methods which reduces the code reuse, this is good as it made the development process easier and 
+the code more neat and readable. I also made sure to comment the code and use correct naming conventions, further improving the readability and thus 
+maintainability of the code.
+
+\section*{Conclusion}
+During this practical there were a number of things I achieved. Firstly, I was able to successfully decompose the problem into smaller easier to solve 
+subproblems, this problem decomposition made the solution significantly easier to code as I could focus on one easier problem at a time then was able 
+to recombine these solutions to form a fully working program. Secondly, I was able to use multiple classes together to solve the solution, separating 
+the converting process into another class was useful as it made the project much more readabe as the code was a lot less cluttered - separate 
+processes could be kept independent. I was also able to use variables of different scope with certain variables only being used within certain methods 
+and others being available to the whole class. This was useful as I was able to transfer information between the convert() and printValues() methods 
+using the variables within the Converter class. The use of conditionals was also central to the formatting of the output message as I needed to use 
+the correct plurality. Lastly, good coding conventions such as variable naming (using appropriate names for variables and the correct casing 
+conventions), commenting, separating reused chunks of code into variables, and parameterisation.
 \end{document}

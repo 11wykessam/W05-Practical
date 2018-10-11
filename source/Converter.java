@@ -45,7 +45,7 @@ public class Converter {
                 System.out.println(numberOfKilograms + " kilograms in stones, pounds and ounces is: ");
             }
 
-            // create an empty line to append to
+            // create an empty line to append to.
             String outputLine = "";
 
             // do a check to see if plurality is needed for stone

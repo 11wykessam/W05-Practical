@@ -1,0 +1,16 @@
+FIRST TESTED CONVERT FUNCTION
+- Worked except for small errors due to inaccuracy in conversion constants.
+
+TESTED CHANGE IMPERIAL
+- Changed method such that it printed the total amounts of each imperial value
+- Checked that the variables had been changed accordingly.
+- i.e 1 stone input -> 1 stone, 14 pounds, 224 ounces
+
+TESTED CHANGE METRIC
+- Ditto
+- Added print statement
+
+- I realised storing the total number of imperial units is unecessary as you can calculate it just as easily from the number of kilograms
+
+TESTED RETURN CERTAIN UNITS
+- try 3 values with all combinations of units.
