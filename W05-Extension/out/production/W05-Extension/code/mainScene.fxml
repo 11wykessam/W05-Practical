@@ -1,0 +1,35 @@
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.GridPane?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Separator?>
+<?import java.net.URL?>
+<?import javafx.scene.control.CheckBox?>
+<GridPane fx:controller="code.Controller" fx:id="mainGridPane"
+          xmlns:fx="http://javafx.com/fxml" alignment="center" hgap="10" vgap="10">
+
+    <Label text="Kilograms:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+    <TextField text="0" onAction="#kilogramFieldChanged" fx:id="kilogramField" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+    <Label fx:id="metricErrorLabel" GridPane.columnIndex="0" GridPane.rowIndex="2" styleClass="errorMessage"/>
+
+    <Separator GridPane.columnIndex="1" GridPane.rowIndex="0" GridPane.rowSpan="2" orientation="VERTICAL"/>
+
+    <Label text="Stones: " GridPane.columnIndex="2" GridPane.rowIndex="0"/>
+    <TextField text="0" onAction="#stoneFieldChanged" fx:id="stoneField" GridPane.columnIndex="2" GridPane.rowIndex="1"/>
+    <Label fx:id="imperialErrorLabel" GridPane.columnIndex="2" GridPane.rowIndex="2" styleClass="errorMessage"/>
+    <CheckBox fx:id="stonesCheckBox" GridPane.columnIndex="2" GridPane.rowIndex="2" GridPane.halignment="RIGHT" onAction="#stonesCheckBoxPressed"/>
+
+    <Label text="Pounds: " GridPane.columnIndex="3" GridPane.rowIndex="0"/>
+    <TextField text="0" onAction="#poundFieldChanged" fx:id="poundField" GridPane.columnIndex="3" GridPane.rowIndex="1"/>
+    <CheckBox fx:id="poundsCheckBox" GridPane.columnIndex="3" GridPane.rowIndex="2" GridPane.halignment="RIGHT" onAction="#poundsCheckBoxPressed"/>
+
+    <Label text="Ounces: " GridPane.columnIndex="4" GridPane.rowIndex="0"/>
+    <TextField text="0" onAction="#ounceFieldChanged" fx:id="ounceField" GridPane.columnIndex="4" GridPane.rowIndex="1"/>
+    <CheckBox fx:id="ouncesCheckBox" GridPane.columnIndex="4" GridPane.rowIndex="2" GridPane.halignment="RIGHT" onAction="#ouncesCheckBoxPressed"/>
+
+    <stylesheets>
+        <URL value="@mainStyle.css"/>
+    </stylesheets>
+</GridPane>

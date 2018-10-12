@@ -57,11 +57,6 @@ public class Converter {
 
     }
 
-    // method to get the totalKilograms
-    public double getTotalKilograms() {
-        return this.totalKilograms;
-    }
-
     // method that takes stones, pounds and ounces and outputs the total in kilograms
     private double calculateNumberOfKilograms(double stoneInput, double poundInput, double ounceInput) {
         double total = 0;
@@ -78,7 +73,6 @@ public class Converter {
 
     // method that sets which imperial units are being returned
     public void setUnitsInUse(boolean stonesInUse, boolean poundsInUse, boolean ouncesInUse) {
-        System.out.println(STONE.isInUse());
         STONE.setInUse(stonesInUse);
         POUND.setInUse(poundsInUse);
         OUNCE.setInUse(ouncesInUse);
@@ -93,6 +87,11 @@ public class Converter {
     }
     public boolean isOunceInUse() {
         return OUNCE.isInUse();
+    }
+
+    // method to get the totalKilograms
+    public double getTotalKilograms() {
+        return this.totalKilograms;
     }
 
 }

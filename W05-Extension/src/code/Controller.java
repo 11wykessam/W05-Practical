@@ -76,17 +76,17 @@ public class Controller {
     @FXML
     public void stonesCheckBoxPressed() {
         stoneField.setDisable(stonesCheckBox.isSelected());
-        converter.setUnitsInUse(stonesCheckBox.isSelected(), converter.isPoundInUse(), converter.isOunceInUse());
+        converter.setUnitsInUse(!stonesCheckBox.isSelected(), converter.isPoundInUse(), converter.isOunceInUse());
     }
     @FXML
     public void poundsCheckBoxPressed() {
         poundField.setDisable(poundsCheckBox.isSelected());
-        converter.setUnitsInUse(converter.isStoneInUse(), poundsCheckBox.isSelected(), converter.isOunceInUse());
+        converter.setUnitsInUse(converter.isStoneInUse(), !poundsCheckBox.isSelected(), converter.isOunceInUse());
     }
     @FXML
     public void ouncesCheckBoxPressed() {
         ounceField.setDisable(ouncesCheckBox.isSelected());
-        converter.setUnitsInUse(converter.isStoneInUse(), converter.isStoneInUse(), ouncesCheckBox.isSelected());
+        converter.setUnitsInUse(converter.isStoneInUse(), converter.isStoneInUse(), !ouncesCheckBox.isSelected());
     }
 
     // method that validates that an entered new value is valid before calling the update imperial method

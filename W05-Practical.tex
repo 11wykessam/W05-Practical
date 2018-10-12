@@ -247,4 +247,64 @@ and others being available to the whole class. This was useful as I was able to 
 using the variables within the Converter class. The use of conditionals was also central to the formatting of the output message as I needed to use 
 the correct plurality. Lastly, good coding conventions such as variable naming (using appropriate names for variables and the correct casing 
 conventions), commenting, separating reused chunks of code into variables, and parameterisation.
+
+\section*{Extension}
+\section*{Design}
+For my extension, I decided to do all the tasks in the specification but also design a GUI for the progam rather than have it run through the command 
+line. I would do this using JavaFX and utilising FXML (a markup language) and CSS. I wanted to have it so the user can convert both from kilograms to 
+imperial and vice versa. Not only this but I wanted the user to choose the formatting for the output (i.e the user could choose to have the output in 
+stones and ounces or just ounces.) Similarly to the previous program, I decomposed the problem into smaller, easier to solve subproblems. One of the 
+key differences was the use of another class - Unit. I would use the class unit so that a single convert command could still be used even when the 
+units that are going to be used are ambiguous within the code. This allows for less code reuse as I do not need to write a different method for 
+conversions between every possible pair of units. The unit class would contain the amount of kilograms that goes into one of that unit and a boolean 
+recording whether the user wishes the unit to be used. For example if the user just wants kilograms to ounce converson then the boolean values for the 
+units pounds and stones would be false.
+
+Another thing I need to take into account is how I can have the user interact with the program, I decided it would be wise to have two sides to the 
+program: one side for metric and another for imperial. The user would enter values in either side and then press enter and the program would 
+automatically update the other side. The user would be able to check a box to disable certain imperial units so that they can do different 
+conversions. The way I wanted the program to do these specific conversions was to have an array of units from largest to smallest and then have a 
+remaining kilograms to convert counter. The program would start at the largest enabled unit and find the maximum number of that unit that fits into 
+the remaining kilograms value. It would then subtract that number of kilograms from a running total and move onto the next largest unit.
+
+To convert back from imperial to kilograms the program needs to individually calculate how many kilograms go into each unit and then add them up to 
+form a total. This would then be input into the kilogram text field. To make sure that the correct conversion is occurring (metric -> imperial or 
+imperial -> metric) then the program needs to be able to detect which text field the user has edited. The way I am planning to do this is to use the 
+text field's onAction method which is called when the user presses enter within any given text field.
+
+One additional thing I need to make sure of is that the user has inputted in the correct format. I will do this by writing a validate function within 
+the main class which takes a string as input and returns a boolean if it matches the format of either an integer or decimal number.
+
+\section*{Testing}
+
+\section*{Evaluation}
+This program meets all the criteria of the original specification in that it can take in a kilogram input and convert this into stones, pounds, and 
+ounces. It also fulfills all of the criteria as specified by the extension. Firstly, the user can input in stones, pounds and ounces and this will be 
+converted into kilograms. This is done by the user simply entering values into the imperial units fields and pressing enter. Because of the way the 
+information is outputted - in individual textboxes with labels above informing which unit's being represented - there was no need for an additional 
+class to format the output. The user is also able to choose the output format. They choose the output format by checking the boxes of the units they 
+want to disable and then the program will only convert into the other available units. 
+
+Outside of what was mentioned within the specification, I also decided to design a GUI for the user to interact with. This was a good way to practice 
+writing a GUI and made the code a lot more event driven. The GUI components often have a method that is called when the user interacts with them in a 
+certain way.
+
+\section*{Conclusion}
+During the development of this program I was able to show multiple programming skills, first and forermost the use of conditionals was at the heart of 
+my program and I used them throughout the development. For example a conditional is used to validate that what the user entered was correct, following 
+this conditionals had to be used to detect which units the user wants to be converted and do the appropriate calculations.
+
+Another thing I achieved was decomposing the problem into multiple classes each further decomposing the problem with their own methods. For example 
+the class Unit was used so that I could have one method for conversion rather than individual methods for convwerting between every possible pair of 
+units. This reduced code reuse and made development faster.
+
+One thing I found quite difficult was making the GUI look decent as it's something I'm not fantastic at. I also found it difficult to figure out how 
+to allow the user to convert in a given format and disabling certain units from being displayed. Eventually I used a combination of check boxes and 
+disabling the text fields to provide a visual representation and in the calculations I used an array of units from largest to smallest to do a 
+conversion in any given format.
+
+If given more time I would allow the user to create their own units so that more obscure measurements can be used. I would also generalise it further 
+so that the user can convert units that aren't used for measuring mass. As well as this, I'd spend more time on making a more detailed GUI and make it 
+significantly more aesthetically pleasing.
+
 \end{document}

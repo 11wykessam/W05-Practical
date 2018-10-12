@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/Arch Linux) (preloaded format=pdflatex 2018.9.30)  10 OCT 2018 23:22
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/Arch Linux) (preloaded format=pdflatex 2018.9.30)  12 OCT 2018 17:36
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -132,7 +132,7 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <7> on input line 81.
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <5> on input line 81.
-[2] [3] [4] [5] [6] (./W05-Practical.aux) ) 
+[2] [3] [4] [5] [6] [7] [8] (./W05-Practical.aux) ) 
 Here is how much of TeX's memory you used:
  2632 strings out of 492642
  34086 string characters out of 6135566
@@ -141,16 +141,16 @@ Here is how much of TeX's memory you used:
  8054 words of font info for 29 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  26i,9n,40p,198b,1684s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/share/texmf-dist/fonts/type1/p
-ublic/amsfonts/cm/cmbx10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts
-/cm/cmbx12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb>
-</usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/tex
-mf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texmf-dist/fonts/t
-ype1/public/amsfonts/cm/cmtt9.pfb>
-Output written on W05-Practical.pdf (6 pages, 97210 bytes).
+</usr/share/texmf-dist/fonts
+/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texmf-dist/fonts/type1/public/
+amsfonts/cm/cmbx12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cm
+r10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/s
+hare/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texmf-dist
+/fonts/type1/public/amsfonts/cm/cmtt9.pfb>
+Output written on W05-Practical.pdf (8 pages, 103920 bytes).
 PDF statistics:
- 47 PDF objects out of 1000 (max. 8388607)
- 32 compressed objects within 1 object stream
+ 55 PDF objects out of 1000 (max. 8388607)
+ 38 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 
