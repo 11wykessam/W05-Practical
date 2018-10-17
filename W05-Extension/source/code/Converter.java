@@ -89,7 +89,7 @@ public class Converter {
         return OUNCE.isInUse();
     }
 
-    // method to get the totalKilograms
+// method to get the totalKilograms
     public double getTotalKilograms() {
         return this.totalKilograms;
     }
